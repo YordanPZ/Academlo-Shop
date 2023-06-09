@@ -6,15 +6,21 @@
 
 body .header{
     width: 100%;
-    height: 12rem;
+    height: 10rem;
 }
-.header .cont_logo img{
-    
+nav{
+    background-color: blueviolet;
+}
+main .section1{
+    width: 100%;
 }
 .header{
     display: flex;
-    align-items: center; 
-    justify-content: center;
+    background-color: aqua;
+}
+.header img{
+    width: 100%;
+    height: 100%;
 }
 .header .cont_logo {
     width: 25%;
@@ -27,11 +33,21 @@ body .header{
 main{
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 .section1{
+    display: flex;
+    gap: 4rem;
+    flex-direction: column;
     margin-top: 3rem;
     width: 80%;
     margin-bottom: 7rem;
+    justify-content: center
+}
+.section1 .card-group{
+    display: flex;
+    gap: 3rem;
+
 }
 .footer{
     display: flex;
