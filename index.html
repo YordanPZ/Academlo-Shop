@@ -25,53 +25,27 @@
   </header>
   <!------------------------NAVIGATE-BAR-MENU----------------->
   <nav class="nav">
-    <i class="fa-solid fa-bars nav__menu nav__icons"></i>
     <div class="nav__buttons">
-      <button type="button" class="nav__button">Nuestra Vision</button>
+      <!-- <button type="button" class="nav__button">Nuestra Vision</button>
       <button type="button" class="nav__button">Productos</button>
-      <button type="button" class="nav__button">preguntas</button>
+      <button type="button" class="nav__button">preguntas</button> -->
     </div>
-    <i class="fa-solid fa-cart-shopping nav__cart nav__icons"></i>
+    <i id="addcart" class="fa-solid fa-cart-shopping nav__cart nav__icons"></i>
   </nav>
   <!----------------------------MAIN---------------------------->
   <main class="main">
     <!--Section 1-->
     <section class="main__section1">
       <div id="articles" class="section1__articles">
-        <!--Articulo 1-->
-        <div class="section1__article">
-          <div class="section1__article-body">
-            <h5 class="section1__article-title">Camiseta de manga corta con cuello redondo</h5>
-            <img src="https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464/eCommerce/shirt1_prckre.png" alt="" class="section1__article__img">
-            <p>precio:100usd</p>
-            <button type="button" class="btn btn-danger section1__article-button">Add</button>
-          </div>
-        </div>
-      </div>
-      <div class="section1__button">
-        <button class="button__grid">Más Productos</button>
+
       </div>
     </section>
     <!--Section 2-->
     <section class="main__section2">
-      <div class="section2__lateral-menu">
-        <ul class="section2__lateral-buttons">
-          <li><button type="button" class="btn btn_navbar section2__button">⭐Nuestra Vision</button></li>
-          <li><button type="button" class="btn btn_navbar section2__button">⭐Productos</button></li>
-          <li><button type="button" class="btn btn_navbar section2__button">⭐preguntas</button></li>
-        </ul>
-      </div>
-    </section>
-    <!--Section 3-->
-    <section class="main__section3">
-      <div class="section3__cart">
-        <p>Articulos seleccionados🛒</p>
-        <ul>
-          <li>Articulo 1</li>
-          <li>Articulo 2</li>
-          <li>Articulo 3</li>
-          <li>Articulo 4</li>
-          <li>Articulo 5</li>
+      <div class="section2__cart">
+        <h3>Articulos seleccionados🛒</h3>
+        <ul class="section2__cart-list">
+          <li>articulos</li>
         </ul>
         <p>El total hasta ahora es 100$</p>
       </div>
@@ -90,8 +64,7 @@
     </div>
   </footer>
   <!--JavaScript-->
-  <script src="./main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./main.js"></script>
 </body>
-
 </html>

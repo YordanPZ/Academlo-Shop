@@ -46,24 +46,31 @@ visibility: hidden;
 }
 /** MAIN */
 /*? Section1 Grilla  */
+
 .main__section1{
     height: 100%;
+    padding: 40px;
 }
 .section1__articles{
     border: 3px solid red;
     padding: 0.5rem;
     height: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
-    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     gap: 1rem;
 }
 .section1__article{
+    display: flex;
+    align-items: center;
     border: 3px solid violet;
     padding: 1rem;
     border-radius: 1rem;
     width: 100%;
     height: 400px;
+    text-align: center;
+}
+.section1__article-body{
+    width: 100%;
 }
 .section1__button{
     width: 100%;
@@ -81,24 +88,19 @@ visibility: hidden;
 .section1__article__img{
     height: 10rem;
 }
-/*? Section2 Menu Hambuguesa  */
-.section2__lateral-menu{
-    border: 2px solid blue;
-    height: 150px;
-    width: 100%;
-    background-color: #43434365;
-}
-.section2__lateral-buttons{
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-/*? Section3 Carrito  */
-.section3__cart{
+/*? Section2 Carrito  */
+.section2__cart{
     border: 2px solid blue;
     height: 500px;
 }
+.main__section2{
+    height: auto;
+    width: 35%;
+}
+.section2__cart{
+    height: auto;
+}
+
 /** FOOTER */
 .footer{
     display: flex;
@@ -127,7 +129,7 @@ visibility: hidden;
     align-items: center;
     justify-content: center;
     background-color: aliceblue;
-    border: 1px solid;
+    border: 1px solid white;
 }
 .footer_avatar:hover ~ .footer_avatar{
     transform: translateX(2rem);
