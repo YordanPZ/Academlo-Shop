@@ -4,6 +4,7 @@ let cartList= document.querySelector(".section2__cart-list")
 const articles = document.querySelector("#articles")
 const navCart = document.querySelector(".nav__cart")
 let cartVisible = document.querySelector(".main__section2")
+let detail = document.querySelector(".main_section3")
 
 //! Hacer la peticion a la API
 function getItems() {
@@ -26,15 +27,16 @@ function printItems(items) {
         <div class="section1__article">
             <div class="section1__article-body">
                 <div>
-                    <h5 class="section1__article-title">${item.name}</h5>
+                <a href="#detalle"> <h5 class="section1__article-title ${item.id}">${item.name}</h5></a>
+                    
                 </div>
                 <div>
                     <img src="${item.image}" alt="" class="section1__article__img">
                 </div>
                 <div>
-                    <p>precio:${item.price}</p>
+                    <p class="section1__article__price">$ ${item.price}</p>
                 </div>
-                <div>
+                <div class="section1__article-btncontainer">
                     <button data-id="${item.id}" type="button" class="section1__article-button ${item.id}">Add</button>
                 </div>
             </div>
@@ -65,7 +67,6 @@ document.querySelector("#articles").addEventListener("click", (event) => {
                     total+=item.price
             }
           }
-
           cartList.innerHTML += cart;
           cartList.innerHTML
         })
@@ -74,6 +75,58 @@ document.querySelector("#articles").addEventListener("click", (event) => {
         });
     }
     itemCart();
+  }else{
+    if(event.target.classList.contains("section1__article-title")){
+      console.log("detalle del articulo");
+      let id = event.target.attributes.class.textContent.split(" ")[1];
+      console.log(id);
+    function itemCart() {
+      axios
+        .get(bbdd)
+        .then((response) => {
+          const items = response.data;
+          let cart = "";
+          for (let item of items) {
+            if (item.id === Number(id)) {
+              cart += `
+              <div class="section3__article">
+              <div class="section3__article-body">
+                <div>
+                  <h5 class="section3__article-title">${item.name}</h5>
+                </div>
+                <div>
+                  <p class="section3__article-category">Categoria: ${item.category} </p>
+                </div>
+                <div>
+                  <img src="${item.image}" alt="#" class="section3__article-img">
+                </div>
+                <div>
+                  <p class="section3__article-price">$ ${item.price}</p>
+                </div>
+                <div>
+                  <p class="section3__article-quantity">Disponibles: ${item.quantity}</p>
+                </div>
+                <div class="section3__article-contdescription">
+                  <p class="section3__article-description">${item.description}</p>
+                </div>
+                <div class="section3__article-btncontainer">
+                  <button data-id="${item.id}" type="button" class="section3__article-button ${item.id}">Volver</button>
+                </div>
+              </div>
+            </div>
+                    `;
+            }
+          }
+          detail.innerHTML= cart;
+
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    itemCart();
+
+    }
   }
 });
 //! Aparecer y esconder el Carrito
@@ -83,3 +136,4 @@ navCart.addEventListener("click", ()=>{
 
 
 })
+//! Aparecer y esconder detalle
