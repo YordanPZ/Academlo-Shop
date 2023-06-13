@@ -1,10 +1,10 @@
 //! Variables
-const bbdd = "https://ecommercebackend.fundamentos-29.repl.co/"
-let cartList= document.querySelector(".section2__cart-list")
-const articles = document.querySelector("#articles")
-const navCart = document.querySelector(".nav__cart")
-let cartVisible = document.querySelector(".main__section2")
-let detail = document.querySelector(".main_section3")
+const bbdd = "https://ecommercebackend.fundamentos-29.repl.co/";
+let cartList = document.querySelector(".section2__cart-list");
+const articles = document.querySelector("#articles");
+const navCart = document.querySelector(".nav__cart");
+let cartVisible = document.querySelector(".main__section2");
+let detail = document.querySelector(".main_section3");
 
 //! Hacer la peticion a la API
 function getItems() {
@@ -55,41 +55,41 @@ document.querySelector("#articles").addEventListener("click", (event) => {
         .then((response) => {
           const items = response.data;
           let cart = "";
-          let total = 0
+          let total = 0;
           for (let item of items) {
             if (item.id === Number(id)) {
               cart += `
-                    <li>${item.name}</li>
+              <div class= "section2__cart-item"> 
+                    <li class="section2__cart-name">${item.name}</li>
                     <img src="${item.image}" alt="#" class="section2__cart-img">
-                    <li>$ ${item.price}</li>
-                    <hr>
+                    <li class="section2__cart-price">$ ${item.price}</li>
+              </div>
                     `;
-                    total+=item.price
+              total += item.price;
             }
           }
           cartList.innerHTML += cart;
-          cartList.innerHTML
+          cartList.innerHTML;
         })
         .catch((error) => {
           console.log(error);
         });
     }
     itemCart();
-  }else{
-    if(event.target.classList.contains("section1__article-title")){
+  } else {
+    if (event.target.classList.contains("section1__article-title")) {
       console.log("detalle del articulo");
       let id = event.target.attributes.class.textContent.split(" ")[1];
-      console.log(id);
-    function itemCart() {
-      axios
-        .get(bbdd)
-        .then((response) => {
-          const items = response.data;
-          let cart = "";
-          for (let item of items) {
-            if (item.id === Number(id)) {
-              cart += `
-              <div class="section3__article">
+      function itemCart() {
+        axios
+          .get(bbdd)
+          .then((response) => {
+            const items = response.data;
+            let cart = "";
+            for (let item of items) {
+              if (item.id === Number(id)) {
+                cart += `
+            <div class="section3__article">
               <div class="section3__article-body">
                 <div>
                   <h5 class="section3__article-title">${item.name}</h5>
@@ -115,25 +115,21 @@ document.querySelector("#articles").addEventListener("click", (event) => {
               </div>
             </div>
                     `;
+              }
             }
-          }
-          detail.innerHTML= cart;
-
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-    itemCart();
-
+            detail.innerHTML = cart;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      itemCart();
     }
   }
 });
 //! Aparecer y esconder el Carrito
-navCart.addEventListener("click", ()=>{
-    cartVisible.classList.toggle("main__section2--toggle2")
-    document.querySelector(".main__section1").classList.toggle("blurmain")
-
-
-})
+navCart.addEventListener("click", () => {
+  cartVisible.classList.toggle("main__section2--toggle2");
+  document.querySelector(".main__section1").classList.toggle("blurmain");
+});
 //! Aparecer y esconder detalle
