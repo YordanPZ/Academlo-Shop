@@ -29,12 +29,28 @@
   </header>
   <!------------------------NAVIGATE-BAR-MENU----------------->
   <nav class="nav">
-    <div class="nav__buttons">
-      <button type="button" class="nav__button"><a href="#integrantes">Integrantes</a></button>
-    </div>
-    <button class="nav__cart">
-      <i class="fa-solid fa-cart-shopping nav__icons"></i>
-    </button>
+    <section class="nav__section1">
+      <div class="nav__buttons">
+        <button type="button" class="nav__button"><a href="#integrantes">Integrantes</a></button>
+      </div>
+      <button class="nav__cart">
+        <i class="fa-solid fa-cart-shopping nav__icons"></i>
+      </button>
+    </section>
+    <!--Section 2-->
+    <section class="nav__section2">
+      <div class="section2__cart">
+        <h3 class="section2__title">Articulos seleccionados🛒</h3>
+        <ul class="section2__cart-listt">
+          <div class="section2__cart-list">
+
+          </div>
+        </ul>
+        <button class="section2__button-buy">
+          <i class="fa-solid fa-bag-shopping section2__buy"> Comprar</i>
+        </button>
+      </div>
+    </section>
   </nav>
   <!----------------------------MAIN---------------------------->
   <main class="main">
@@ -43,19 +59,16 @@
       <div id="articles" class="section1__articles">
       </div>
     </section>
-    <!--Section 2-->
-    <section class="main__section2">
-      <div class="section2__cart">
-        <h3 class="section2__title">Articulos seleccionados🛒</h3>
-        <ul class="section2__cart-list">
-        </ul>
-        <button class="section2__button-buy">
-          <i class="fa-solid fa-bag-shopping section2__buy"> Comprar</i>
-        </button>
-      </div>
-    </section>
     <!--Section 3-->
     <section id="detalle" class="main_section3">
+      <div class="modal">
+
+      </div>
+      <div class="section3__article-btncontainer">
+        <button type="button" class="section3__article-button">
+          <P>Volver</P>
+        </button>
+      </div>
     </section>
   </main>
   <footer class="footer">
