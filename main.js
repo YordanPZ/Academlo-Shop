@@ -45,7 +45,7 @@ function printItems(items) {
   }
   articles.innerHTML = hmtl;
 }
-//! Agregar elementos al Carrito
+//! Agregar elementos al Carrito y Modal
 document.querySelector("#articles").addEventListener("click", (event) => {
   if (event.target.classList.contains("section1__article-button")) {
     let id = event.target.attributes.class.textContent.split(" ")[1];
@@ -55,7 +55,7 @@ document.querySelector("#articles").addEventListener("click", (event) => {
         .then((response) => {
           const items = response.data;
           let cart = "";
-          let total = 0;
+          // let total = 0;
           for (let item of items) {
             if (item.id === Number(id)) {
               cart += `
@@ -65,11 +65,11 @@ document.querySelector("#articles").addEventListener("click", (event) => {
                     <li class="section2__cart-price">$ ${item.price}</li>
               </div>
                     `;
-              total += item.price;
+              // total += item.price;
             }
           }
           cartList.innerHTML += cart;
-          cartList.innerHTML;
+          // cartList.innerHTML;
         })
         .catch((error) => {
           console.log(error);
