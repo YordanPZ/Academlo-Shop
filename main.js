@@ -1,35 +1,60 @@
 //! Variables
+//? URL API
 const bbdd = "https://ecommercebackend.fundamentos-29.repl.co/";
+//? Esconder carrito
+const navCart = document.querySelector("#nav__cartBtn"); //boton
+let cartVisible = document.querySelector(".nav__section2"); //section
+//? Carrito de compras
+const car = document.querySelector("#car")
+
 let cartList = document.querySelector("#car__list");
 const articles = document.querySelector("#articles");
-const navCart = document.querySelector(".nav__cart"); //boton
-let cartVisible = document.querySelector(".nav__section2"); //section
 let detail = document.querySelector(".modal");
 
-//vaciar carrito
-const emptyCar = document.querySelector("#empy__cart")
+//? vaciar carrito
+const emptyCarButton = document.querySelector("#empty-cart")
 
+//? Esconder detalle
 let detailvisible= document.querySelector(".section3__article-button") //boton
 let detailBtn = document.querySelector(".main_section3") //section
 
 //? Productos del carrito
 let carProducts = []
+
 //! Funcion escuchadora
+//*LISTO
 eventListnerLoaders()
 function eventListnerLoaders(){
   //* Cuando se presione el boton de "Add to car"
   articles.addEventListener("click", addProduct)
+  car.addEventListener("click", deleteProducts)
+  emptyCarButton.addEventListener("click", emptyCar)
 
 }
-//! Agregar elementos al carrito
+//! Aparecer y esconder el Carrito
+//*LISTO
+navCart.addEventListener("click", () => {
+  cartVisible.classList.toggle("nav__section2--toggle2");
+  document.querySelector(".main__section1").classList.toggle("blurmain");
+});
+//! Aparecer y esconder Modal
+//*LISTO
+detailvisible.addEventListener("click", () => {
+  detailBtn.classList.toggle("section3__article--visible");
+  document.querySelector(".main__section1").classList.toggle("blurmain");
+});
+// //! Agregar elementos al carrito
+//*LISTO
 function addProduct(event){
   if(event.target.classList.contains("section1__article-button")){
-    const carProductsElement = event.target.parentElement.parentElement.parentElement
+    const produc = event.target.parentElement.parentElement.parentElement
+    console.log(produc);
+    carProductsElements(produc)
+    
   }
-
 }
-
-//! Hacer la peticion a la API
+//! Hacer la peticion a la API IRRELEVANTE
+//*LISTO
 function getItems() {
   axios
     .get(bbdd)
@@ -42,7 +67,8 @@ function getItems() {
     });
 }
 getItems();
-//! Imprimir los elementos en la grilla
+//! Imprimir los elementos en la grilla IRRELEVANTE
+//*LISTO
 function printItems(items) {
   let hmtl = "";
   for (const item of items) {
@@ -63,12 +89,9 @@ function printItems(items) {
   }
   articles.innerHTML = hmtl;
 }
-//! Detectar click en el Carrito y agregar en el Modal
+//! Mostrar Modal
+//*FALTA ADAPTAR
 document.querySelector("#articles").addEventListener("click", (event) => {
-  if (event.target.classList.contains("section1__article-button")) {
-    const carProductsElement = event.target.parentElement.parentElement.parentElement
-    carProductsElements(carProductsElement)
-  } else {
     if (event.target.classList.contains("section1__article-title")) {
       let id = event.target.attributes.class.textContent.split(" ")[1];
       function itemCart() {
@@ -104,20 +127,10 @@ document.querySelector("#articles").addEventListener("click", (event) => {
       }
       itemCart();
     }
-  }
+  
 });
-//! Aparecer y esconder el Carrito
-navCart.addEventListener("click", () => {
-  cartVisible.classList.toggle("nav__section2--toggle2");
-  document.querySelector(".main__section1").classList.toggle("blurmain");
-});
-//! Aparecer y esconder detalle
- detailvisible.addEventListener("click", () => {
-   detailBtn.classList.toggle("section3__article--visible");
-   document.querySelector(".main__section1").classList.toggle("blurmain");
- });
-
  //! Sumar al carrito teniendo en cuenta que los duplicados
+ //*LISTO
  //? convertir HTML el array de objetos
  function carProductsElements(product){
   const infoProduct = {
@@ -162,16 +175,19 @@ navCart.addEventListener("click", () => {
  }
 
   //! Eliminar productos del Carrito
-
-  function deleteProfucts(event){
+  //*LISTO
+  function deleteProducts(event){
     if(event.target.classList.contains("delete__product")){
       const productId = event.target.getAttribute("data-id")
       carProducts = carProducts.filter(produc => produc.id !== productId)
       carElementsHTML()
     }
   }
+
 //! Vaciar carrito
-function emptyCarr(){
+ //*LISTO
+function emptyCar(){
   carProducts = []
+  carElementsHTML()
 }
 

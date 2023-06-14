@@ -181,7 +181,18 @@ text-decoration: none;
     color: var(--title);
     font-size: 1.5rem;
 }
-
+.empy__cart {
+    border: none;
+    font-size: 1.5rem;
+    color: var(--title);
+    font-family: 'Comfortaa', cursive;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 15px;
+    box-shadow: 0 4px 4px 4px var(--Menosintenso);
+}
 /** MAIN */
 /*? Section1 Grilla  */
 .blurmain{
