@@ -18,7 +18,13 @@ let carProducts = []
 
 eventListnerLoaders()
 function eventListnerLoaders(){
-  
+  //* Cuando se presione el boton de "Add to car"
+  articles.addEventListener("click", addProduct)
+
+}
+//! Agregar elementos al carrito
+function addProduct(event){
+
 }
 
 //! Hacer la peticion a la API
