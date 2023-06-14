@@ -108,7 +108,7 @@ text-decoration: none;
 }
 
 .section2__cart-list{
-    height: 300px;
+    height: 400px;
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -144,6 +144,21 @@ text-decoration: none;
     transition: 1s;
 }
 .section2__button-buy:active{
+    background-color: white;
+    transform: scale(1.5);
+}
+.delete__product{
+    border: none;
+    font-size: 1.3rem;
+    color: var(--title);
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 4px 4px var(--Menosintenso);
+    background-color: rgba(255, 0, 0, 0.314);
+    padding: 0.5rem;
+    border-radius: 10px;
+    transition: 1s;
+}
+.delete__product:active{
     background-color: white;
     transform: scale(1.5);
 }

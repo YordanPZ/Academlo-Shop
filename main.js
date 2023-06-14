@@ -1,16 +1,25 @@
 //! Variables
 const bbdd = "https://ecommercebackend.fundamentos-29.repl.co/";
-let cartList = document.querySelector(".section2__cart-list");
+let cartList = document.querySelector("#car__list");
 const articles = document.querySelector("#articles");
 const navCart = document.querySelector(".nav__cart"); //boton
 let cartVisible = document.querySelector(".nav__section2"); //section
 let detail = document.querySelector(".modal");
+
+//vaciar carrito
+const emptyCar = document.querySelector("#empy__cart")
 
 let detailvisible= document.querySelector(".section3__article-button") //boton
 let detailBtn = document.querySelector(".main_section3") //section
 
 //? Productos del carrito
 let carProducts = []
+//! Funcion escuchadora
+
+eventListnerLoaders()
+function eventListnerLoaders(){
+  
+}
 
 //! Hacer la peticion a la API
 function getItems() {
@@ -46,40 +55,11 @@ function printItems(items) {
   }
   articles.innerHTML = hmtl;
 }
-//! Agregar elementos al Carrito y Modal
+//! Detectar click en el Carrito y agregar en el Modal
 document.querySelector("#articles").addEventListener("click", (event) => {
   if (event.target.classList.contains("section1__article-button")) {
     const carProductsElement = event.target.parentElement.parentElement.parentElement
     carProductsElements(carProductsElement)
-
-    // let id = event.target.attributes.class.textContent.split(" ")[1];
-    // function itemCart() {
-    //   axios
-    //     .get(bbdd)
-    //     .then((response) => {
-    //       const items = response.data;
-    //       let cart = "";
-    //       // let total = 0;
-    //       for (let item of items) {
-    //         if (item.id === Number(id)) {
-    //           cart += `
-    //           <div class= "section2__cart-item"> 
-    //                 <li class="section2__cart-name">${item.name}</li>
-    //                 <img src="${item.image}" alt="#" class="section2__cart-img">
-    //                 <li class="section2__cart-price">$ ${item.price}</li>
-    //           </div>
-    //                 `;
-    //           // total += item.price;
-    //         }
-    //       }
-    //       cartList.innerHTML += cart;
-    //       // cartList.innerHTML;
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    // }
-    // itemCart();
   } else {
     if (event.target.classList.contains("section1__article-title")) {
       let id = event.target.attributes.class.textContent.split(" ")[1];
@@ -129,6 +109,7 @@ navCart.addEventListener("click", () => {
    document.querySelector(".main__section1").classList.toggle("blurmain");
  });
 
+ //! Sumar al carrito teniendo en cuenta que los duplicados
  //? convertir HTML el array de objetos
  function carProductsElements(product){
   const infoProduct = {
@@ -138,9 +119,51 @@ navCart.addEventListener("click", () => {
     price:product.querySelector(".section1__article-body p").textContent,
     quantity:1 ,
   }
-
-  console.log(infoProduct);
-
+  if(carProducts.some(product => product.id === infoProduct.id)){
+    const productIncrement = carProducts.map(product => {
+      if(product.id === infoProduct.id){
+        product.quantity++
+        return product
+      }else{
+        return product
+      }
+    })
+    carProducts = [...productIncrement]
+  }else{
+    carProducts = [...carProducts, infoProduct]
+  }
+  carElementsHTML()
+ }
+ function carElementsHTML(){
+   let carHTML = "";
+   for (let product of carProducts) {
+     carHTML += `  <div class= "section2__cart-item"> 
+                     <p class="section2__cart-name">${product.name}</p>
+                     <img src="${product.image}" alt="#" class="section2__cart-img">
+                     <p class="section2__cart-price"> ${product.price}</p>
+                     <p class="section2__cart-quant">Cantidad: ${product.quantity}</p>
+                     
+                  </div>
+                  <div class="car__product__button">
+                  <button class="delete__product" data-id="${product.id}">
+                          Delete
+                  </button>
+                  </div>`;
+   }
+   cartList.innerHTML = carHTML;
  }
 
+  //! Eliminar productos del Carrito
+
+  function deleteProfucts(event){
+    if(event.target.classList.contains("delete__product")){
+      const productId = event.target.getAttribute("data-id")
+      carProducts = carProducts.filter(produc => produc.id !== productId)
+      carElementsHTML()
+    }
+  }
+//! Vaciar carrito
+function emptyCarr(){
+  carProducts = []
+}
 
