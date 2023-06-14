@@ -7,7 +7,7 @@ let cartVisible = document.querySelector(".nav__section2"); //section
 let detail = document.querySelector(".modal");
 
 //vaciar carrito
-const emptyCar = document.querySelector("#empy__cart")
+const emptyCart = document.querySelector("#empy__cart")
 
 let detailvisible= document.querySelector(".section3__article-button") //boton
 let detailBtn = document.querySelector(".main_section3") //section
@@ -15,19 +15,21 @@ let detailBtn = document.querySelector(".main_section3") //section
 //? Productos del carrito
 let carProducts = []
 //! Funcion escuchadora
-eventListnerLoaders()
-function eventListnerLoaders(){
-  //* Cuando se presione el boton de "Add to car"
-  articles.addEventListener("click", addProduct)
+// eventListnerLoaders()
+// function eventListnerLoaders(){
+//   //* Cuando se presione el boton de "Add to car"
+//   articles.addEventListener("click", addProduct)
+//   //* Cuando se de click al botón Empty Car
+//   emptyCarButton.addEventListener("click", emptyCar)
 
-}
-//! Agregar elementos al carrito
-function addProduct(event){
-  if(event.target.classList.contains("section1__article-button")){
-    const carProductsElement = event.target.parentElement.parentElement.parentElement
-  }
+// }
+// //! Agregar elementos al carrito
+// function addProduct(event){
+//   if(event.target.classList.contains("section1__article-button")){
+//     const carProductsElement = event.target.parentElement.parentElement.parentElement
+//   }
 
-}
+// }
 
 //! Hacer la peticion a la API
 function getItems() {
@@ -166,12 +168,13 @@ navCart.addEventListener("click", () => {
   function deleteProfucts(event){
     if(event.target.classList.contains("delete__product")){
       const productId = event.target.getAttribute("data-id")
-      carProducts = carProducts.filter(produc => produc.id !== productId)
+      carProducts = carProducts.filter(produc => produc.id != productId)
       carElementsHTML()
     }
   }
 //! Vaciar carrito
-function emptyCarr(){
-  carProducts = []
+function emptyCar() {
+  carProducts = [];
+    carElementsHTML();
 }
 
