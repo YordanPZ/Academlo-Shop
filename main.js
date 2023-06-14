@@ -15,7 +15,6 @@ let detailBtn = document.querySelector(".main_section3") //section
 //? Productos del carrito
 let carProducts = []
 //! Funcion escuchadora
-
 eventListnerLoaders()
 function eventListnerLoaders(){
   //* Cuando se presione el boton de "Add to car"
@@ -24,6 +23,9 @@ function eventListnerLoaders(){
 }
 //! Agregar elementos al carrito
 function addProduct(event){
+  if(event.target.classList.contains("section1__article-button")){
+    const carProductsElement = event.target.parentElement.parentElement.parentElement
+  }
 
 }
 
