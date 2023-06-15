@@ -61,10 +61,28 @@ text-decoration: none;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     padding-right: 1.5rem;
     padding-left: 10px;
 }
+.nav__button-higher:hover,
+.nav__button-lower:hover,
+.nav__icons{
+    cursor: pointer;
+}
+.nav__pricebtn{
+    display: flex;
+    gap: 1rem;
+}
+.nav__pricebtn button{
+    font-size: 1rem;  
+    background-color: var(--Claro);
+    border: none;
+    color: var(--title);
+    padding: 10px;
+    border-radius: 10px;
+}
+/*? Section2 Carrito  */
 .nav__section2{
     width: 100%;
     display: flex;
@@ -75,7 +93,6 @@ text-decoration: none;
     top: 10rem;
     transition: 1s;
 }
-/*? Section2 Carrito  */
 .nav__section2--toggle2{
     left: 0% ;
     transition: 1s;
@@ -108,7 +125,7 @@ text-decoration: none;
 }
 
 .section2__cart-list{
-    height: 400px;
+    max-height: 400px;
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -203,6 +220,13 @@ text-decoration: none;
     padding: 40px;
     background-color:var(--Claro);
     transition: 1s;
+    display: flex;
+    flex-direction: column;
+}
+.main__section1 h2{
+    align-self: center;
+    margin-bottom: 1rem;
+    color: var(--title);
 }
 .section1__articles{
     padding: 0.5rem;
@@ -258,6 +282,13 @@ text-decoration: none;
     background-color: white;
     transform: scale(1.5);
 }
+.section1__article-button:hover,
+.delete__product:hover,
+.section2__button-buy:hover,
+.section1__article-title:hover{
+cursor: pointer;
+}
+
 .section1__button{
     width: 100%;
     height: 3rem;
@@ -290,12 +321,18 @@ text-decoration: none;
 .section3__article--visible{
     visibility: initial;
 }
+.main_section3{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .section3__article{
     display: flex;
     justify-content: center;
     background-color: var(--Claro);
     padding-bottom: 1rem;
-
+    background-color: transparent;
 }
 .section3__article-body{
     display: flex;
@@ -341,12 +378,10 @@ text-decoration: none;
     font-family: 'Comfortaa', cursive;
     color: var(--title);
     box-shadow: 0 3px 3px 3px;
-    transition: 1s;
 }
 .section3__article-button:hover{
     cursor: pointer;
 }
-
 /** FOOTER */
 .footer{
     display: flex;
@@ -354,7 +389,17 @@ text-decoration: none;
     align-items: center;
     width: 100%;
     height: 7rem;
-    background-color:var(--Intenso);
+    background-color:var(--Claro);
+    background-image: url(./assets/Ondas.svg);
+    background-size:cover;
+    border-top: 1px solid var(--Intenso);
+}
+.footer button{
+    margin-right: 5rem;
+    font-size: 3rem;
+    border: none;
+    background-color: transparent;
+    color: #71a5a5;
 }
 .footer__avatars{
     width: 100%;
@@ -380,15 +425,15 @@ text-decoration: none;
     transform: translateX(2rem);
 }
 .footer_avatar--alex{
-    background-image: url(./assets/alexanderimage.png);
+    background-image: url(./assets/alex.png);
     background-size: cover;
 }
 .footer_avatar--helen{
-    background-image:url(./assets/helenimage.png);
+    background-image:url(./assets/helen.png);
     background-size: cover;
 }
 .footer_avatar--yordan{
-    background-image: url(./assets/yordanimage.png);
+    background-image: url(./assets/yordan.png);
     background-size: cover;
 }
 @media screen and (min-width:767px){
@@ -401,30 +446,23 @@ text-decoration: none;
     .header__img{
         height: 15rem;
     }
-    .main__section2{
-        top: 20rem;
-    }
-    .section2__cart-item{
-        width: 21rem;
+    .main__section1 h2{
+        font-size: 2rem;
     }
     .section2__cart-list{
-        width: 60%;
+        width: 40rem;
     }
-    .section2__cart-name{
-        font-size: 1.7rem;
+    .main_section3{
+        top: 16rem;
     }
-    .section2__cart-img{
-        height: 15rem;
+    .footer{
+        background-image: url(./assets/Ondas.svg);
+        background-size:cover;
+        background-position: 20px;
+        background-repeat: no-repeat;
     }
-    .section2__cart-price{
-        font-size: 2rem;
-    }
-    .section2__cart{
-        margin: 0 3rem 0 3rem;
-    }
-    .section2__title{
-        font-size: 2rem;
-    }
+    
+
 }
 @media screen and (min-width:911px){
     .section1__articles{
@@ -434,23 +472,32 @@ text-decoration: none;
         grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
         gap: 1rem;
     }
-    .section2__cart-item{
-        width: 26rem;
+    .section2__cart-list{
+        width: 50rem;
     }
     .main_section3{
-        color: var(--title);
-        font-family: 'Comfortaa';
         display: flex;
         justify-content: center;
-        background-color: var(--Claro);
     }
     .section3__article{
         display: flex;
         justify-content: center;
         background-color: var(--Claro);
         padding-bottom: 1rem;
-        width: 70%;
     }
+    .section3__article-body{
+        height: 35rem;
+    }
+    .section3__article-title{
+        margin-top: 1rem;
+    }
+    .footer{
+        background-image: url(./assets/Ondas.svg);
+        background-size:cover;
+        background-position: 20px;
+        background-repeat: no-repeat;
+    }
+    
 }
 @media screen and (min-width:1439px){
     .section1__articles{
@@ -462,38 +509,122 @@ text-decoration: none;
         row-gap: 4rem;
         column-gap: 3rem;
     }
-    .section2__cart-list{
-        width: 80%;
-        flex-direction: row;
-        gap: 3rem;
-        flex-wrap: wrap;
+    .footer{
+        background-image: url(./assets/Ondas.svg);
+        background-size:cover;
+        background-position: 20px;
+        background-repeat: no-repeat;
     }
-    .section2__cart-item{
-        height: 24rem;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
+    
 }
-@media screen and (min-width:1900px){
+@media screen and (min-width:1800px){
+    .nav{
+        height: 5rem;
+    }
+    .nav__button{
+        height: 2rem;
+        width: 15rem;
+        font-size: 1.5rem;
+        margin-top: 1.2rem;
+    }
+    .nav__button-higher,
+    .nav__button-lower{
+        height: 2.4rem;
+        width: 15rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .nav__pricebtn button{
+        font-size: 1.5rem;
+    }
+    .nav__pricebtn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .nav__cart{
+        font-size: 3rem;
+        margin-top: .5rem;
+    }
     .section1__articles{
         padding: 0.5rem;
         height: auto;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
         gap: 1rem;
-        row-gap: 4rem;
-        column-gap: 3rem;
+        row-gap: 7rem;
+        column-gap: 6rem;
+        margin-left: 10rem;
+        margin-right: 10rem;
+    }
+    .section1__article__img{
+        height: 13rem;
+    }
+    .section1__article-title{
+        font-size: 1.5rem;
+    }
+    .section1__article__price{
+        font-size: 2rem;
+    }
+    .section1__article{
+        height: 28rem;
     }
     .section2__cart-list{
-        width: 80%;
-        flex-direction: row;
-        gap: 3rem;
+        width: 50rem;
     }
-    .section2__cart-item{
-        height: 24rem;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+    .section3__article{
+        background-color: transparent;
+        min-height: 22rem;
     }
+    .section3__article-button{
+        width: 10%;
+    }
+    .section3__article-btncontainer{
+        display: flex;
+        justify-content: center;
+    }
+    .section3__article-body{
+        height: 38rem;
+        width: 70rem;
+        
+    }
+    .section3__article{
+        justify-content: center;
+    }
+    .section3__article-title{
+        font-size: 1.5rem;
+        color: black;
+        font-weight: 600;
+    }
+    .section3__article-category{
+        font-size: 1.2rem;
+        color: black
+    }
+    .section3__article-img{
+        height: 15rem;
+    }
+    .section3__article-price{
+        font-size: 1.5rem;
+        color: black
+    }
+    .section3__article-quantity{
+        font-size: 1rem;
+        color: black
+    }
+    .section3__article-description{
+        font-size: 1.4rem;
+        line-height: 3rem;
+        color: black
+    }
+    .footer{
+        background-image: url(./assets/Ondas.svg);
+        background-size:cover;
+        background-position: 20px;
+        background-repeat: no-repeat;
+    }
+    
 }
 
 

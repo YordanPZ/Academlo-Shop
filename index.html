@@ -23,15 +23,23 @@
 </head>
 <body>
   <!--------------------------HEADER--------------->
-  <header class="header">
+  <header id="home" class="header">
     <img src="./assets/logo blanco.png" alt="" class="header__img">
     <h1 class="header__h1">AcademloShop</h1>
   </header>
   <!------------------------NAVIGATE-BAR-MENU----------------->
   <nav class="nav">
     <section class="nav__section1">
-      <div class="nav__buttons">
+      <div class="nav__integratsbtn">
         <button type="button" class="nav__button"><a href="#integrantes">Integrantes</a></button>
+      </div>
+      <div class="nav__pricebtn">
+        <button id="btnhigher" class="nav__button-higher">
+          <span>Precio </span><i class="fa-solid fa-arrow-up"></i>
+        </button>
+        <button id="btnlower" class="nav__button-lower">
+          <span>Precio </span><i class="fa-solid fa-arrow-down"></i>
+        </button>
       </div>
       <button id="nav__cartBtn" class="nav__cart">
         <i class="fa-solid fa-cart-shopping nav__icons"></i>
@@ -43,7 +51,7 @@
         <h3 class="section2__title">Articulos seleccionados🛒</h3>
         <ul class="section2__cart-listt">
           <div id="car__list" class="section2__cart-list">
-
+            <p>Carrito vacio!</p>
           </div>
         </ul>
         <button class="section2__button-buy">
@@ -57,7 +65,9 @@
   <main class="main">
     <!--Section 1-->
     <section class="main__section1">
+      <h2>Nuestros Productos!</h2>
       <div id="articles" class="section1__articles">
+
       </div>
     </section>
     <!--Section 3-->
@@ -82,6 +92,9 @@
       <div class="footer_avatar footer_avatar--yordan">
       </div>
     </div>
+    <button  class="footer__home">
+      <a href="#home"><i class="fa-solid fa-house-user"></i></a>
+    </button>
   </footer>
   <!--JavaScript-->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
