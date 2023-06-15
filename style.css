@@ -12,8 +12,8 @@ body,html{
     scroll-behavior: smooth;
 }
 a{
-color: inherit;
-text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 :root{
     --Intenso:#C4DFDF;
@@ -82,6 +82,10 @@ text-decoration: none;
     padding: 10px;
     border-radius: 10px;
 }
+.btnTotal{
+    font-size: 1.4rem;
+    color: var(--title);
+}
 /*? Section2 Carrito  */
 .nav__section2{
     width: 100%;
@@ -118,12 +122,10 @@ text-decoration: none;
     font-size: 1.1rem;
     gap: 1rem;
     border-radius: 10px;
-    /* position: fixed; */
     transition: 1s;
     overflow-y: scroll;
     overflow: hidden;
 }
-
 .section2__cart-list{
     max-height: 400px;
     list-style: none;
@@ -198,6 +200,7 @@ text-decoration: none;
     color: var(--title);
     font-size: 1.5rem;
 }
+
 .empy__cart {
     border: none;
     font-size: 1.5rem;
@@ -227,6 +230,13 @@ text-decoration: none;
     align-self: center;
     margin-bottom: 1rem;
     color: var(--title);
+}
+.main__section1 p{
+    align-self: center;
+    margin-bottom: 1rem;
+    color: var(--title);
+    font-size: 1.4rem;
+
 }
 .section1__articles{
     padding: 0.5rem;
@@ -286,9 +296,17 @@ text-decoration: none;
 .delete__product:hover,
 .section2__button-buy:hover,
 .section1__article-title:hover{
-cursor: pointer;
+    transform: scale(1.015);
+    cursor: pointer;
+    filter: brightness(1.3);   
 }
-
+.section1__article-button:active,
+.delete__product:active,
+.section2__button-buy:active,
+.section1__article-title:active{
+    transform: scale(0.8);
+    transition: 0.05s;
+}
 .section1__button{
     width: 100%;
     height: 3rem;
@@ -461,8 +479,6 @@ cursor: pointer;
         background-position: 20px;
         background-repeat: no-repeat;
     }
-    
-
 }
 @media screen and (min-width:911px){
     .section1__articles{
@@ -545,7 +561,7 @@ cursor: pointer;
         align-items: center;
     }
     .nav__cart{
-        font-size: 3rem;
+        font-size: 1.7rem;
         margin-top: .5rem;
     }
     .section1__articles{
@@ -624,7 +640,6 @@ cursor: pointer;
         background-position: 20px;
         background-repeat: no-repeat;
     }
-    
 }
 
 

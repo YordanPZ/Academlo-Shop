@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,6 +22,7 @@
     rel="stylesheet">
   <title>Shop Academlo 2</title>
 </head>
+
 <body>
   <!--------------------------HEADER--------------->
   <header id="home" class="header">
@@ -34,11 +36,11 @@
         <button type="button" class="nav__button"><a href="#integrantes">Integrantes</a></button>
       </div>
       <div class="nav__pricebtn">
-        <button id="btnhigher" class="nav__button-higher">
-          <span>Precio </span><i class="fa-solid fa-arrow-up"></i>
+        <button id="btnhigher" class="nav__button-higher higher">
+          <span class="higher">Precio </span><i class="fa-solid fa-arrow-up higher"></i>
         </button>
-        <button id="btnlower" class="nav__button-lower">
-          <span>Precio </span><i class="fa-solid fa-arrow-down"></i>
+        <button id="btnlower" class="nav__button-lower lower">
+          <span class="lower">Precio </span><i class="fa-solid fa-arrow-down lower"></i>
         </button>
       </div>
       <button id="nav__cartBtn" class="nav__cart">
@@ -49,6 +51,8 @@
     <section id="car" class="nav__section2">
       <div class="section2__cart">
         <h3 class="section2__title">Articulos seleccionados🛒</h3>
+        <div id="car__total" class="car__total">
+        </div>
         <ul class="section2__cart-listt">
           <div id="car__list" class="section2__cart-list">
             <p>Carrito vacio!</p>
@@ -66,14 +70,13 @@
     <!--Section 1-->
     <section class="main__section1">
       <h2>Nuestros Productos!</h2>
+      <p>Filtros</p>
       <div id="articles" class="section1__articles">
-
       </div>
     </section>
     <!--Section 3-->
     <section id="detalle" class="main_section3">
       <div class="modal">
-
       </div>
       <div class="section3__article-btncontainer">
         <button type="button" class="section3__article-button">
@@ -92,7 +95,7 @@
       <div class="footer_avatar footer_avatar--yordan">
       </div>
     </div>
-    <button  class="footer__home">
+    <button class="footer__home">
       <a href="#home"><i class="fa-solid fa-house-user"></i></a>
     </button>
   </footer>
