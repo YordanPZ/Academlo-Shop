@@ -13,29 +13,35 @@ const car = document.querySelector("#car");
 let cartList = document.querySelector("#car__list");
 //? Modal
 const articles = document.querySelector("#articles");
-const detail = document.querySelector(".modal");
-//? Vaciar carrito
-const emptyCarButton = document.querySelector("#empty-cart");
-//? Total del carrito
-let total = document.querySelector("#car__total");
-//? Esconder detalle
-const detailvisible = document.querySelector(".section3__article-button"); //boton
-const detailBtn = document.querySelector(".main_section3"); //section
+const navCart = document.querySelector(".nav__cart"); //boton
+let cartVisible = document.querySelector(".nav__section2"); //section
+let detail = document.querySelector(".modal");
+
+//vaciar carrito
+const emptyCar = document.querySelector("#empy__cart")
+
+let detailvisible= document.querySelector(".section3__article-button") //boton
+let detailBtn = document.querySelector(".main_section3") //section
+
 //? Productos del carrito
 let carProducts = [];
 //? Todos los Items
 let allProducts = [];
 //! Funcion escuchadora
-//*LISTO
-eventListnerLoaders();
-function eventListnerLoaders() {
-  //* Cuando se presione el boton de "Add to cart"
-  articles.addEventListener("click", addProduct);
-  car.addEventListener("click", deleteProducts);
-  emptyCarButton.addEventListener("click", emptyCar);
-  btnss.addEventListener("click", btn);
-  articles.addEventListener("click", Modal);
+eventListnerLoaders()
+function eventListnerLoaders(){
+  //* Cuando se presione el boton de "Add to car"
+  articles.addEventListener("click", addProduct)
+
 }
+//! Agregar elementos al carrito
+function addProduct(event){
+  if(event.target.classList.contains("section1__article-button")){
+    const carProductsElement = event.target.parentElement.parentElement.parentElement
+  }
+
+}
+
 //! Hacer la peticion a la API
 //*LISTO
 function getItems() {
@@ -182,81 +188,20 @@ function carElementsHTML() {
                           <p>Eliminar</p>
                     </button>
                   </div>`;
+   }
+   cartList.innerHTML = carHTML;
+ }
+
+  //! Eliminar productos del Carrito
+
+  function deleteProfucts(event){
+    if(event.target.classList.contains("delete__product")){
+      const productId = event.target.getAttribute("data-id")
+      carProducts = carProducts.filter(produc => produc.id !== productId)
+      carElementsHTML()
+    }
   }
-  cartList.innerHTML = carHTML;
-}
-//! Eliminar productos del Carrito
-//*LISTO
-function deleteProducts(event) {
-  if (event.target.classList.contains("delete__product")) {
-    const productId = event.target.getAttribute("data-id");
-    carProducts = carProducts.filter((produc) => produc.id !== productId);
-    carElementsHTML();
-  }
-  if (carProducts.length === 0) {
-    const empty = `<p>Carrito vacio!</p>`;
-    cartList.innerHTML = empty;
-  }
-  let totalPrice = 0;
-  for (let product of carProducts) {
-    totalPrice += product.price * product.quantity;
-  }
-  total.innerHTML = `<p>Total:$ ${totalPrice}</p>`;
-}
 //! Vaciar carrito
-//*LISTO
-function emptyCar() {
-  carProducts = [];
-  carElementsHTML();
-}
-//! Ordenar los articulos Higher or Lower
-//*LISTO
-function btn(event) {
-  if (event.target.classList.contains("lower")) {
-    let lower = [...allProducts].sort((a, b) => {
-      return a.precio - b.precio;
-    });
-    let hmtl = "";
-    for (const item of lower) {
-      hmtl += `
-          <div data-id="${item.id}" class="section1__article">
-              <div class="section1__article-body">
-                    <h5 class="section1__article-title ${item.id}">${item.nombre}</h5>
-                  <div>
-                      <img src="${item.image}" alt="" class="section1__article__img">
-                  </div>
-                      <p class="section1__article__price"><i class="fa-solid fa-dollar-sign"></i> ${item.precio}</p>
-                  <div class="section1__article-btncontainer">
-                      <button data-id="${item.id}" type="button" class="section1__article-button ${item.id}">Add</button>
-                  </div>
-              </div>
-        </div>
-        `;
-    }
-    articles.innerHTML = hmtl;
-  } else {
-    if (event.target.classList.contains("higher")) {
-      let lower = [...allProducts].sort((a, b) => {
-        return b.precio - a.precio;
-      });
-      let hmtl = "";
-      for (const item of lower) {
-        hmtl += `
-          <div data-id="${item.id}" class="section1__article">
-              <div class="section1__article-body">
-                    <h5 class="section1__article-title ${item.id}">${item.nombre}</h5>
-                  <div>
-                      <img src="${item.image}" alt="" class="section1__article__img">
-                  </div>
-                      <p class="section1__article__price"><i class="fa-solid fa-dollar-sign"></i> ${item.precio}</p>
-                  <div class="section1__article-btncontainer">
-                      <button data-id="${item.id}" type="button" class="section1__article-button ${item.id}">Add</button>
-                  </div>
-              </div>
-        </div>
-        `;
-      }
-      articles.innerHTML = hmtl;
-    }
-  }
+function emptyCarr(){
+  carProducts = []
 }
