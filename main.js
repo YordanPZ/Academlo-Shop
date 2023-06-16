@@ -16,6 +16,9 @@ const articles = document.querySelector("#articles");
 const detail = document.querySelector(".modal");
 //? Vaciar carrito
 const emptyCarButton = document.querySelector("#empty-cart");
+//? Filtros
+let filt = document.querySelector("#filters") //section
+let btnFilt = document.querySelector("#filter__btn") //boton
 //? Total del carrito
 let total = document.querySelector("#car__total");
 //? Esconder detalle
@@ -35,6 +38,8 @@ function eventListnerLoaders() {
   emptyCarButton.addEventListener("click", emptyCar);
   btnss.addEventListener("click", btn);
   articles.addEventListener("click", Modal);
+  btnFilt.addEventListener("click",categoryShow)
+  filt.addEventListener("click", categoryFilter)
 }
 //! Hacer la peticion a la API
 //*LISTO
@@ -43,7 +48,6 @@ function getItems() {
     .get(bbdd)
     .then((response) => {
       const items = response.data;
-      console.log(items);
       printItems(items);
     })
     .catch((error) => {
@@ -55,9 +59,8 @@ getItems();
 //*LISTO
 function printItems(items) {
   let hmtl = "";
-  let nombres = [];
   for (const item of items) {
-    nombres.push({
+    allProducts.push({
       id: item.id,
       nombre: item.name,
       precio: item.price,
@@ -80,9 +83,9 @@ function printItems(items) {
             </div>
         </div>
       `;
-  }
-  allProducts = nombres;
+  };
   articles.innerHTML = hmtl;
+  categoriess(allProducts)
 }
 //! Aparecer y esconder el Carrito
 //*LISTO
@@ -178,8 +181,8 @@ function carElementsHTML() {
                      <p class="section2__cart-quant">Cantidad: ${product.quantity}</p>
                   </div>
                   <div class="car__product__button">
-                    <button class="delete__product" data-id="${product.id}">
-                          <p>Eliminar</p>
+                    <button class="delete__product delete" data-id="${product.id}">
+                          <p data-id="${product.id}" class="delete">Eliminar</p>
                     </button>
                   </div>`;
   }
@@ -188,7 +191,8 @@ function carElementsHTML() {
 //! Eliminar productos del Carrito
 //*LISTO
 function deleteProducts(event) {
-  if (event.target.classList.contains("delete__product")) {
+  if (event.target.classList.contains("delete")) {
+    console.log("dekete");
     const productId = event.target.getAttribute("data-id");
     carProducts = carProducts.filter((produc) => produc.id !== productId);
     carElementsHTML();
@@ -259,4 +263,52 @@ function btn(event) {
       articles.innerHTML = hmtl;
     }
   }
+}
+//! Create categories
+function categoriess(products){
+  let cats = Array.from(new Set(products.map(e => e.category)))
+  for (const cat of cats) {
+    filt.innerHTML += `<button class="filterbtns ${cat}"><p class="${cat}">${cat}</p></button>`
+  }
+}
+//! Mostrar y esconder categorias
+function categoryShow(){
+  filt.classList.toggle("filters-visible")
+}
+//! Filtros por categorias
+function categoryFilter(event){``
+  let catery
+  if(event.target.classList.contains("shirt")){
+     catery = allProducts.filter(e => e.category === "shirt")
+    console.log(catery);
+  } else {
+    if(event.target.classList.contains("hoddie")){
+       catery = allProducts.filter(e => e.category === "hoddie")
+      console.log(catery);
+    }else{
+      if(event.target.classList.contains("sweater")){
+         catery = allProducts.filter(e => e.category === "sweater")
+        console.log(catery);
+      }
+    }
+  }
+  let hmtl = "";
+    for (const item of catery) {
+      hmtl += `
+          <div data-id="${item.id}" class="section1__article">
+              <div class="section1__article-body">
+                    <h5 class="section1__article-title ${item.id}">${item.nombre}</h5>
+                  <div>
+                      <img src="${item.image}" alt="" class="section1__article__img">
+                  </div>
+                      <p class="section1__article__price"><i class="fa-solid fa-dollar-sign"></i> ${item.precio}</p>
+                  <div class="section1__article-btncontainer">
+                      <button data-id="${item.id}" type="button" class="section1__article-button ${item.id}">Add</button>
+                  </div>
+              </div>
+        </div>
+        `;
+    }
+    articles.innerHTML = hmtl;
+
 }

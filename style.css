@@ -65,9 +65,10 @@ a{
     padding-right: 1.5rem;
     padding-left: 10px;
 }
+.filter__btn:hover,
 .nav__button-higher:hover,
 .nav__button-lower:hover,
-.nav__icons{
+.nav__icons,.filterbtns{
     cursor: pointer;
 }
 .nav__pricebtn{
@@ -85,6 +86,42 @@ a{
 .btnTotal{
     font-size: 1.4rem;
     color: var(--title);
+}
+.filter__btn,
+.filterbtns{
+    width: 11rem;
+    align-self: center;
+    height: 2rem;
+    border: none;
+    background-color: var(--Menosintenso);
+    padding-top: 4px;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    font-family: 'Comfortaa', cursive;
+    color: var(--title);
+    box-shadow: 0 3px 3px 3px;
+    transition: 0.4s;
+}
+.filterbtns{
+    width: fit-content;
+    text-align: center;
+    padding: 0 0.5rem;
+    padding-top: 4px;
+}
+.filterbtns:hover{
+    transform: scale(1.1);
+}
+.filters{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    display: none;
+}
+.filters-visible{
+    display:initial;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 /*? Section2 Carrito  */
 .nav__section2{
@@ -200,7 +237,6 @@ a{
     color: var(--title);
     font-size: 1.5rem;
 }
-
 .empy__cart {
     border: none;
     font-size: 1.5rem;
@@ -370,9 +406,11 @@ a{
 .section3__article-title{
     font-size: 1.3rem;
     font-family: 'Comfortaa', cursive;
+    color: black;
 }
 .section3__article-category{
     font-size: 1rem;
+    color: black;
 }
 .section3__article-contdescription{
     width: 90%;
@@ -380,6 +418,14 @@ a{
 .section3__article-description{
     font-size: 1.2rem;
     line-height: 1.5rem;
+    color: black;
+}
+.section3__article-quantity{
+    font-size: 1rem;
+    color: black
+}
+.section3__article-price{
+    color: black
 }
 .section3__article-btncontainer{
     width: 50%;
@@ -464,6 +510,16 @@ a{
     .header__img{
         height: 15rem;
     }
+    .filter__btn,
+    .filterbtns{
+        width: 23%;
+    }
+    .filterbtns{
+        width: fit-content;
+        text-align: center;
+        padding: 0 0.5rem;
+        padding-top: 4px;
+    }
     .main__section1 h2{
         font-size: 2rem;
     }
@@ -479,8 +535,35 @@ a{
         background-position: 20px;
         background-repeat: no-repeat;
     }
+    .section3__article-title{
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    .section3__article-category{
+        font-size: 1.2rem;
+    }
+    .section3__article-price{
+        font-size: 1.5rem;
+    }
+    .section3__article-quantity{
+        font-size: 1rem;
+    }
+    .section3__article-description{
+        font-size: 1.4rem;
+        line-height: 3rem;
+    }
 }
 @media screen and (min-width:911px){
+    .filter__btn,
+    .filterbtns{
+        width: 18%;
+    }
+    .filterbtns{
+        width: fit-content;
+        text-align: center;
+        padding: 0 0.5rem;
+        padding-top: 4px;
+    }
     .section1__articles{
         padding: 0.5rem;
         height: auto;
@@ -507,12 +590,30 @@ a{
     .section3__article-title{
         margin-top: 1rem;
     }
+    .section3__article-title{
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    .section3__article-category{
+        font-size: 1.2rem;
+    }
+    .section3__article-price{
+        font-size: 1.5rem;
+    }
+    .section3__article-quantity{
+        font-size: 1rem;
+    }
+    .section3__article-description{
+        font-size: 1.4rem;
+        line-height: 3rem;
+    }
     .footer{
         background-image: url(./assets/Ondas.svg);
         background-size:cover;
         background-position: 20px;
         background-repeat: no-repeat;
     }
+    
     
 }
 @media screen and (min-width:1439px){
@@ -530,6 +631,55 @@ a{
         background-size:cover;
         background-position: 20px;
         background-repeat: no-repeat;
+    }
+    .filter__btn,
+    .filterbtns{
+        width:11%;
+    }
+    .filterbtns{
+        width: fit-content;
+        text-align: center;
+        padding: 0 0.5rem;
+        padding-top: 4px;
+    }
+    .section3__article{
+        background-color: transparent;
+        min-height: 22rem;
+    }
+    .section3__article-button{
+        width: 10%;
+    }
+    .section3__article-btncontainer{
+        display: flex;
+        justify-content: center;
+    }
+    .section3__article-body{
+        height: 38rem;
+        width: 70rem;
+        
+    }
+    .section3__article{
+        justify-content: center;
+    }
+    .section3__article-title{
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    .section3__article-category{
+        font-size: 1.2rem;
+    }
+    .section3__article-price{
+        font-size: 1.5rem;
+    }
+    .section3__article-quantity{
+        font-size: 1rem;
+    }
+    .section3__article-description{
+        font-size: 1.4rem;
+        line-height: 3rem;
+    }
+    .section3__article-img{
+        height: 15rem;
     }
     
 }
@@ -563,6 +713,16 @@ a{
     .nav__cart{
         font-size: 1.7rem;
         margin-top: .5rem;
+    }
+    .filter__btn,
+    .filterbtns{
+        width: 9%;
+    }
+    .filterbtns{
+        width: fit-content;
+        text-align: center;
+        padding: 0 0.5rem;
+        padding-top: 4px;
     }
     .section1__articles{
         padding: 0.5rem;
@@ -611,35 +771,30 @@ a{
     }
     .section3__article-title{
         font-size: 1.5rem;
-        color: black;
         font-weight: 600;
     }
     .section3__article-category{
         font-size: 1.2rem;
-        color: black
     }
     .section3__article-img{
         height: 15rem;
     }
     .section3__article-price{
         font-size: 1.5rem;
-        color: black
     }
     .section3__article-quantity{
         font-size: 1rem;
-        color: black
     }
     .section3__article-description{
         font-size: 1.4rem;
         line-height: 3rem;
-        color: black
     }
     .footer{
         background-image: url(./assets/Ondas.svg);
         background-size:cover;
         background-position: 20px;
         background-repeat: no-repeat;
-    }
+    } 
 }
 
 
