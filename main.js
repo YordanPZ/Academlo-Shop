@@ -40,6 +40,16 @@ function eventListnerLoaders() {
   articles.addEventListener("click", Modal);
   btnFilt.addEventListener("click",categoryShow)
   filt.addEventListener("click", categoryFilter)
+
+  //* Se ejecuta cuando carga la pagina LocalStorage
+  document.addEventListener("DOMContentLoaded", ()=>{
+    //* Si el LocalStorage tiene info, entonces igualamos carProducts con la indo del LocalStorage.
+    //* pero si el localStorage esta vacio entonces carProducts es igual a un array vacio
+
+    carProducts = JSON.parse(localStorage.getItem("car")) || []
+    carElementsHTML()
+  })
+
 }
 //! Hacer la peticion a la API
 //*LISTO
@@ -187,7 +197,14 @@ function carElementsHTML() {
                   </div>`;
   }
   cartList.innerHTML = carHTML;
+  productsStorage()
 }
+//! Mandar al LocalStorage el carrito
+//*Listo
+function productsStorage(){
+  localStorage.setItem("car", JSON.stringify(carProducts))
+}
+
 //! Eliminar productos del Carrito
 //*LISTO
 function deleteProducts(event) {
@@ -312,3 +329,17 @@ function categoryFilter(event){``
     articles.innerHTML = hmtl;
 
 }
+//* Local Storage
+//* Es una base de datos del navegador que nos permite almacenar informacion 
+//* para hacerla recurrente dentro de nuestra pagina
+//? Guardando un valora en el localStorage => setItem("key" y "value")
+// localStorage.setItem("name","Yordan")
+//? Obtener info desde el LocalStorage => getItem
+//console.log(localStorage.getItem("name"));
+// const user = {name: "Yordan", lastName:"Jimenez"}
+//? Convertir el objeto al formato Json
+// localStorage.setItem("user", JSON.stringify(user))
+//? Obtener la info y convertirla de JSON a JavaScript
+// const userLocal = localStorage.getItem("user")
+// JSON.parse(userLocal)
+// console.log(JSON.parse(userLocal));
